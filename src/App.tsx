@@ -21,7 +21,19 @@ import 'aos/dist/aos.css';
 import { Notyf } from 'notyf';
 import 'notyf/notyf.min.css';
 
+import emailjs from '@emailjs/browser';
+
 import styles from './App.module.css';
+
+/* ---------------------------------------------------------------------------
+ *  Configuração do EmailJS  ─  https://dashboard.emailjs.com
+ *  Substitua os 3 valores abaixo pelos da sua conta (Email Services / Templates
+ *  / Account > API Keys). No template do EmailJS use as variáveis:
+ *  {{name}}, {{email}}, {{subject}}, {{message}}.
+ * ------------------------------------------------------------------------- */
+const EMAILJS_SERVICE_ID = 'service_wrscmd3';   // ex.: service_ab12cde
+const EMAILJS_TEMPLATE_ID = 'template_qhg22ug'; // ex.: template_xy34fgh
+const EMAILJS_PUBLIC_KEY = 'Njh7EpQ8FiC9FysSr';   // ex.: AbCdEf123456
 
 /* ---------------------------------------------------------------------------
  *  Tipagens do domínio
@@ -711,7 +723,7 @@ const Contact: FC<ContactProps> = ({ notyf }) => {
   const isValidEmail = (value: string): boolean =>
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
 
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
@@ -724,12 +736,28 @@ const Contact: FC<ContactProps> = ({ notyf }) => {
     }
 
     setSending(true);
-    // Simulação de envio — conecte aqui seu backend / EmailJS / Formspree.
-    window.setTimeout(() => {
-      setSending(false);
+    try {
+      // Envio real via EmailJS. As chaves ficam no topo do arquivo.
+      // Os nomes abaixo devem bater com as variáveis do seu template.
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          name: form.name,
+          email: form.email,
+          subject: form.subject || '(sem assunto)',
+          message: form.message,
+        },
+        { publicKey: EMAILJS_PUBLIC_KEY },
+      );
       notyf?.success('Mensagem enviada! Retorno em breve.');
       setForm({ name: '', email: '', subject: '', message: '' });
-    }, 900);
+    } catch (err) {
+      console.error('Falha no envio (EmailJS):', err);
+      notyf?.error('Não foi possível enviar. Tente novamente ou use o e-mail direto.');
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -881,7 +909,7 @@ const App: FC = () => {
       duration: 3200,
       position: { x: 'right', y: 'top' },
       types: [
-        { type: 'success', background: 'linear-gradient(135deg,#ff3b52,#2f80ff)' },
+        { type: 'success', background: 'linear-gradient(135deg,#8b5cf6,#06e7f7)' },
         { type: 'error', background: '#ef4444' },
       ],
     });

@@ -617,7 +617,7 @@
 .floatChip {
   position: absolute;
   z-index: 5;
-  right: -14px; top: 24px;
+  right: 16px; top: 64px;
   display: flex;
   align-items: center;
   gap: 9px;
@@ -1079,7 +1079,7 @@
   .formRow { grid-template-columns: 1fr; }
   .heroCtas { width: 100%; }
   .heroCtas .btn { flex: 1; justify-content: center; }
-  .floatChip { right: 8px; top: 12px; }
+  .floatChip { right: 12px; top: 58px; }
   .heroStats { gap: 20px; }
 }
 

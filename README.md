@@ -4,6 +4,7 @@ Portfólio de desenvolvedor em **React + TypeScript** com **CSS puro** (`App.mod
 tema **Dark (padrão)** / **Light**, estética "IDE + gamer sóbrio", 100% responsivo (testado até 320px).
 
 ## Stack
+
 - **React 18 + TypeScript** (arquitetura single-file em `src/App.tsx`)
 - **CSS puro** via CSS Modules (`src/App.module.css`) — sem Tailwind/Bootstrap
 - **Boxicons** (via CDN no `index.html`)
@@ -11,6 +12,7 @@ tema **Dark (padrão)** / **Light**, estética "IDE + gamer sóbrio", 100% respo
 - **Notyf** (feedback do formulário)
 
 ## Rodando o projeto
+
 ```bash
 npm install
 npm run dev        # ambiente de desenvolvimento
@@ -19,6 +21,7 @@ npm run preview    # pré-visualiza o build
 ```
 
 ## O que você deve trocar (placeholders)
+
 Tudo está centralizado e comentado no topo do `src/App.tsx`:
 
 1. **Foto** — já incluída em `public/person.png`. Para trocar, substitua o arquivo.
@@ -26,10 +29,20 @@ Tudo está centralizado e comentado no topo do `src/App.tsx`:
    - `image`: hoje aponta para o Unsplash. Coloque seus prints em `public/` e use `"/img/seuprint.png"`.
    - `deployUrl` e `gitUrl`: estão como `'#'` (marcados com `// TODO`). Cole os links reais.
 3. **Redes sociais** — links `github.com` / `linkedin.com` no Drawer e no Footer.
-4. **Formulário** — em `Contact`, o envio é simulado (`setTimeout`).
-   Conecte seu backend, **EmailJS** ou **Formspree** no ponto indicado por comentário.
+4. **Formulário (EmailJS)** — o envio já é real via [EmailJS](https://dashboard.emailjs.com).
+   Preencha as 3 constantes no topo do `src/App.tsx`:
+   ```ts
+   const EMAILJS_SERVICE_ID = "service_wrscmd3";
+   const EMAILJS_TEMPLATE_ID = "template_qhg22ug";
+   const EMAILJS_PUBLIC_KEY = "mN1-z4NL2agCDPEPf";
+   ```
+   Passos: crie a conta → **Email Services** (conecte seu Gmail/SMTP) → copie o _Service ID_ →
+   **Email Templates** (crie um template usando as variáveis `{{name}}`, `{{email}}`,
+   `{{subject}}`, `{{message}}`) → copie o _Template ID_ → **Account > General / API Keys** →
+   copie a _Public Key_. Cole os três valores e o formulário passa a enviar de verdade.
 
 ## Estrutura
+
 ```
 ├── index.html            # CDN do Boxicons + meta tags
 ├── public/
@@ -42,6 +55,7 @@ Tudo está centralizado e comentado no topo do `src/App.tsx`:
 ```
 
 ## Detalhes de qualidade
+
 - `overflow-x: hidden` no `body`, `#root` e `.app` (sem rolagem lateral no mobile).
 - Menu mobile (drawer) com overlay, trava de scroll, fechamento por ESC e por clique.
 - Foco visível acessível, `prefers-reduced-motion` respeitado, `aria-label` nos controles.
