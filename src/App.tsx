@@ -162,7 +162,7 @@ const PROJECTS: readonly Project[] = [
       + 'entradas e exibe os resultados de forma organizada — pensada para o dia a '
       + 'dia de cadastro e conferência em automação comercial.',
     image:
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
+      'ConsultarCNPJ.webp',
     stack: ['Delphi', 'API REST', 'JSON', 'Firebird'],
     deployUrl: '#', // TODO: link do release/executável
     gitUrl: '#',    // TODO: repositório do projeto
@@ -171,10 +171,10 @@ const PROJECTS: readonly Project[] = [
   {
     title: 'Calculadora Delphi',
     description:
-      'Calculadora desenvolvida em Delphi com foco em lógica de operações e '
-      + 'interface VCL responsiva ao teclado.',
+      'Um projeto que marcou meu avanço no aprendizado de Delphi, '
+      + 'explorando recursos da linguagem e práticas de desenvolvimento profissional.',
     image:
-      'https://images.unsplash.com/photo-1587145820266-a5951ee6f620?auto=format&fit=crop&w=900&q=80',
+      'CalculadoraDelphi.webp',
     stack: ['Delphi', 'VCL', 'Object Pascal'],
     deployUrl: '#',
     gitUrl: '#',
@@ -182,10 +182,10 @@ const PROJECTS: readonly Project[] = [
   {
     title: 'MediCenter',
     description:
-      'Site institucional de um hospital para agendamento de consultas, '
-      + 'construído com HTML, CSS e JavaScript puros e layout responsivo.',
+      'Projeto de tela principal em HTML e CSS, inteiramente construído com Flexbox, '
+      + 'destacando habilidades em design e organização de layouts responsivos.',
     image:
-      'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&w=900&q=80',
+      'MediCenter.webp',
     stack: ['HTML', 'CSS', 'JavaScript'],
     deployUrl: '#',
     gitUrl: '#',
@@ -196,18 +196,18 @@ const PROJECTS: readonly Project[] = [
       'Cardápio online interativo para hamburgueria: navegação por categorias, '
       + 'carrinho e experiência mobile-first.',
     image:
-      'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=80',
+      'TheKingBurguer.webp',
     stack: ['HTML', 'CSS', 'JavaScript'],
     deployUrl: '#',
     gitUrl: '#',
   },
   {
-    title: 'Calculadora Convencional',
+    title: 'Calculadora IMC',
     description:
-      'Versão convencional da calculadora em Delphi, explorando componentes VCL '
-      + 'e tratamento de eventos para operações básicas.',
+      'Este projeto é uma calculadora de IMC (Índice de Massa Corporal '
+      + 'desenvolvida em Delphi (VCL).',
     image:
-      'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=900&q=80',
+      'CalculadoraIMC.webp',
     stack: ['Delphi', 'VCL'],
     deployUrl: '#',
     gitUrl: '#',
