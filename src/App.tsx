@@ -498,7 +498,7 @@ const About: FC = () => (
       <div className={styles.aboutGrid}>
         <div className={styles.aboutText} data-aos="fade-up">
           <p>
-            Sou <strong>Desenvolvedor Delphi Jr.</strong> na ONGOLD Tecnologia,
+            Sou <strong>Desenvolvedor Delphi Jr.</strong>,
             atuando no desenvolvimento de sistemas ERP para o varejo. Trabalho
             diariamente com <strong>Delphi 7, 10 e 12</strong>, modelando e
             otimizando bancos <strong>Firebird</strong> e integrando aplicações
