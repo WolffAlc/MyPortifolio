@@ -479,7 +479,7 @@ const Hero: FC = () => {
                     loading="eager"
                   />
                   <span className={styles.portraitTag}>
-                    <b>~/</b> dev-jr @ ongold
+                    <b>~/</b> dev-jr
                   </span>
                 </div>
               </div>
