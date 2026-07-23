@@ -36,6 +36,24 @@ const EMAILJS_TEMPLATE_ID = 'template_qhg22ug'; // ex.: template_xy34fgh
 const EMAILJS_PUBLIC_KEY = 'Njh7EpQ8FiC9FysSr';   // ex.: AbCdEf123456
 
 /* ---------------------------------------------------------------------------
+ *  Configuração do botão flutuante do WhatsApp
+ *  Número em formato internacional, apenas dígitos (DDI + DDD + número).
+ * ------------------------------------------------------------------------- */
+const WHATSAPP_NUMBER = '5581973432910';
+
+/** Gera uma mensagem de saudação dinâmica de acordo com o horário do visitante. */
+function buildWhatsappMessage(): string {
+  const hour = new Date().getHours();
+  const greeting = hour < 12 ? 'Bom dia' : hour < 18 ? 'Boa tarde' : 'Boa noite';
+  return `${greeting}, Wolfgang! Vi seu portfólio e gostaria de conversar sobre uma oportunidade.`;
+}
+
+/** Monta o link do WhatsApp (wa.me) já com a mensagem pré-preenchida e codificada. */
+function buildWhatsappLink(): string {
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(buildWhatsappMessage())}`;
+}
+
+/* ---------------------------------------------------------------------------
  *  Tipagens do domínio
  * ------------------------------------------------------------------------- */
 type Theme = 'dark' | 'light';
@@ -861,6 +879,31 @@ const Contact: FC<ContactProps> = ({ notyf }) => {
 };
 
 /* ---------------------------------------------------------------------------
+ *  Sub-componente: Botão Flutuante do WhatsApp
+ *  Link dinâmico (saudação conforme o horário) + efeito de pulso em CSS.
+ * ------------------------------------------------------------------------- */
+const WhatsAppButton: FC = () => {
+  // useState garante que o link seja calculado uma vez por sessão de visita,
+  // evitando recomputar a saudação a cada re-render do App.
+  const [href] = useState<string>(buildWhatsappLink);
+
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={styles.whatsappBtn}
+      aria-label="Conversar no WhatsApp"
+      title="Fale comigo no WhatsApp"
+    >
+      <span className={styles.whatsappPulse} aria-hidden="true" />
+      <span className={styles.whatsappPulse2} aria-hidden="true" />
+      <i className="bx bxl-whatsapp" />
+    </a>
+  );
+};
+
+/* ---------------------------------------------------------------------------
  *  Sub-componente: Footer
  * ------------------------------------------------------------------------- */
 const Footer: FC = () => (
@@ -975,6 +1018,8 @@ const App: FC = () => {
       </main>
 
       <Footer />
+
+      <WhatsAppButton />
 
       <button
         type="button"
