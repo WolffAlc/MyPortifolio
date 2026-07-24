@@ -371,7 +371,7 @@ const MobileMenu: FC<MobileMenuProps> = ({ open, onClose }) => (
       <div className={styles.drawerFoot}>
         <a
           className={styles.drawerSocial}
-          href="https://github.com/"
+          href="https://www.linkedin.com/in/wolfgang-carneiro-74a20521b"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="GitHub"
@@ -380,7 +380,7 @@ const MobileMenu: FC<MobileMenuProps> = ({ open, onClose }) => (
         </a>
         <a
           className={styles.drawerSocial}
-          href="https://www.linkedin.com/"
+          href="https://github.com/WolffAlc"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="LinkedIn"
